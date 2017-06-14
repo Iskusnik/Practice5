@@ -18,7 +18,16 @@ namespace Practice5
             //а2  а5  а9  а11
             //а6  а8  а12 а15
             //а7  а13 а14 а16                                 - обязательно
-            
+            int N = int.Parse(Console.ReadLine());
+            int[,] arr = new int[N, N];
+            int x = 0, y = 0;
+            int i = 1;
+            while (x != N - 1 && y != N - 1)
+            {
+                y++;
+                arr
+            }
+
             // Движение по диагонале до стенки, шаг вдоль стенки
         }
     }
