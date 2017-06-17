@@ -22,12 +22,67 @@ namespace Practice5
             int[,] arr = new int[N, N];
             int x = 0, y = 0;
             int i = 1;
-            while (x != N - 1 && y != N - 1)
+            int up = 0, right = 0;
+            while (i != N * N) //x != N - 1 && y != N - 1
             {
-                y++;
-                arr
+                if (arr[y, x] == 0)
+                { 
+                arr[y, x] = i;
+                }
+                i++;
+                
+
+
+                if (y == 0)
+                {
+                    up = 1;
+                }
+
+                if (x == 0)
+                {
+                    right = 1;
+                }
+                
+                if (x == N - 1)
+                {
+                    right = -1;
+                }
+                
+                if (y == N - 1)
+                {
+                    up = -1;
+                }
+
+                if (x == 0 && y == x)
+                {
+                    up = 1;
+                    right = 0;
+                }
+
+                if (x == N - 1 && y == 0)
+                {
+                    up = -1;
+                    right = 0;
+                }
+
+                if (x == 0 && y == N - 1)
+                {
+                    up = 0;
+                    right = 1;
+                }
+
+                y += up;
+                x += right;
+
             }
 
+            for (int Ycoord = 0; Ycoord < N; Ycoord++)
+            {
+                Console.WriteLine();
+
+                for (int Xcoord = 0; Xcoord < N; Xcoord++)
+                    Console.Write(arr[Ycoord, Xcoord] + "  ");
+            }
             // Движение по диагонале до стенки, шаг вдоль стенки
         }
     }
