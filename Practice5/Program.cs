@@ -26,50 +26,52 @@ namespace Practice5
             while (i != N * N) //x != N - 1 && y != N - 1
             {
                 if (arr[y, x] == 0)
-                { 
-                arr[y, x] = i;
+                {
+                    arr[y, x] = i;
                 }
                 i++;
-                
 
-
-                if (y == 0)
-                {
-                    up = 1;
-                }
-
-                if (x == 0)
-                {
-                    right = 1;
-                }
-                
-                if (x == N - 1)
-                {
-                    right = -1;
-                }
-                
-                if (y == N - 1)
-                {
-                    up = -1;
-                }
 
                 if (x == 0 && y == x)
                 {
-                    up = 1;
-                    right = 0;
+                    y++;
+                    arr[y, x] = i;
+                    i++;
+                    right = 1;
+                    up = -1;
                 }
 
                 if (x == N - 1 && y == 0)
                 {
-                    up = -1;
-                    right = 0;
+                    y++;
+                    arr[y, x] = i;
+                    i++;
+                    right = -1;
+                    up = 1;
                 }
 
                 if (x == 0 && y == N - 1)
                 {
-                    up = 0;
+                    x++;
+                    y--;
+                    arr[y, x] = i;
+                    i++;
+                }
+
+                if (y == 0 || x == N - 1)
+                {
+                    
+                    up = 1;
+                    right = -1;
+                }
+                
+                if (x == 0 || y == N - 1)
+                {
+                    up = -1;
                     right = 1;
                 }
+                
+                
 
                 y += up;
                 x += right;
