@@ -22,68 +22,100 @@ namespace Practice5
             int[,] arr = new int[N, N];
             int x = 0, y = 0;
             int i = 1;
-            int up = 0, right = 0;
-            while (i != N * N) //x != N - 1 && y != N - 1
+
+            arr[0, 0] = 1;
+            i++;
+            while (i <= N * N) //x != N - 1 && y != N - 1
             {
-                if (arr[y, x] == 0)
-                {
-                    arr[y, x] = i;
-                }
-                i++;
+                
 
 
-                if (x == 0 && y == x)
+                /*
+                if (x == N - 1 || x == 0)
                 {
                     y++;
                     arr[y, x] = i;
                     i++;
-                    right = 1;
-                    up = -1;
                 }
-
-                if (x == N - 1 && y == 0)
-                {
-                    y++;
-                    arr[y, x] = i;
-                    i++;
-                    right = -1;
-                    up = 1;
-                }
-
-                if (x == 0 && y == N - 1)
+                else
+                if (y == N - 1 || y == 0)
                 {
                     x++;
-                    y--;
                     arr[y, x] = i;
                     i++;
+                }*/
+
+                if (x == 0 && y != N - 1)
+                {
+                    y++;
+                    arr[y, x] = i;
+                    i++;
+
+                    while (y != 0)
+                    {
+                        y--;
+                        x++;
+                        arr[y, x] = i;
+                        i++;
+                    }
                 }
 
-                if (y == 0 || x == N - 1)
+                if (y == N - 1 && x != N - 1)
                 {
-                    
-                    up = 1;
-                    right = -1;
-                }
-                
-                if (x == 0 || y == N - 1)
-                {
-                    up = -1;
-                    right = 1;
-                }
-                
-                
+                    x++;
+                    arr[y, x] = i;
+                    i++;
 
-                y += up;
-                x += right;
+                    while (x != N - 1)
+                    {
+                        y--;
+                        x++;
+                        arr[y, x] = i;
+                        i++;
+                    }
+                }
+
+                if (y == 0 && x != N - 1)
+                {
+                    x++;
+                    arr[y, x] = i;
+                    i++;
+
+                    while (x != 0)
+                    {
+                        y++;
+                        x--;
+                        arr[y, x] = i;
+                        i++;
+                    }
+                }
+
+                if (x == N - 1 && y != N - 1)
+                {
+                    y++;
+                    arr[y, x] = i;
+                    i++;
+                    while (y != N - 1)
+                    {
+                        y++;
+                        x--;
+                        arr[y, x] = i;
+                        i++;
+                    }
+                }
+
+                
+                
+                
 
             }
 
             for (int Ycoord = 0; Ycoord < N; Ycoord++)
             {
                 Console.WriteLine();
-
+                Console.WriteLine();
                 for (int Xcoord = 0; Xcoord < N; Xcoord++)
-                    Console.Write(arr[Ycoord, Xcoord] + "  ");
+                    Console.Write("{0,-5}", arr[Ycoord, Xcoord]);
             }
             // Движение по диагонале до стенки, шаг вдоль стенки
         }
